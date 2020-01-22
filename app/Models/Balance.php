@@ -8,4 +8,9 @@ class Balance extends Model
 {
     //
     public $timestamps = false;
+
+    public function deposit($valor)
+    {
+        dd($valor);
+    }
 }
