@@ -3,7 +3,7 @@
 @section('title', 'Home Admin')
 
 @section('content_header')
-    <h1 class="m-0 text-dark">Dashboard</h1>
+    <h1 class="m-0 text-dark">Saldo</h1>
 
     <ol class="breadcrumb">
       
@@ -16,7 +16,7 @@
         <div class="col-12">
             <div class="card">
             <div class="card-header">
-                <a href="" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Regarregar</a>
+                <a href="{{route('balance.deposit')}}" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Regarregar</a>
                 <a href="" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i> sacar</a>
             </div>
                 <div class="card-body">

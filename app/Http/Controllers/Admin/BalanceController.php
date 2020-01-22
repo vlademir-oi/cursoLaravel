@@ -16,9 +16,19 @@ class BalanceController extends Controller
         //se nao existir valor mostra 0.
         $amount = $balance ? $balance->amount : 0;
 
-       
-
         return view('admin.balance.index', compact('amount'));
     }
+
+    public function deposit()
+    {
+        return view('admin.balance.deposit');
+    }
+
+    public function depositStore(Request $request)
+    {
+        dd($request->all());
+    }
+
+
 
 }
