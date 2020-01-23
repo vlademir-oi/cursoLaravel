@@ -31,18 +31,63 @@ class Balance extends Model
             DB::commit();
             return[
                 'success' => true,
-                'mensage' => 'Sucesso ao reccarregar'
+                'message' => 'Sucesso ao reccarregar'
             ];
         }else{
             DB::rollback();
 
         return[
             'success' => false,
-            'mensage' => 'Falha ao reccarregar'
+            'message' => 'Falha ao reccarregar'
         ];
 
          }
     }
+
+
+    public function withdrawn(float $valor) : Array
+    {
+        // vamos verificar se a pessoa possui saldo suficiente
+        if ($this->amount < $valor)
+        return [
+            'success' => false,
+            'message' => 'Saldo insuficiente para saque',
+        ];
+
+
+
+        DB::beginTransaction();
+
+        $totalBefore = $this->amount ? $this->amount : 0;
+        $this->amount -= number_format($valor, 2, '.','');
+        $retWithdrawn = $this->save();
+
+       $historic =  auth()->user()->historics()->create([
+        'type'         => 'O',
+        'amount'       =>  $valor,
+        'total_before' => $totalBefore,
+        'total_after'  => $this->amount,
+        'date'         =>  date('Ymd'),
+         ]);
+
+
+        if($retWithdrawn && $historic){
+            DB::commit();
+            return[
+                'success' => true,
+                'message' => 'Sucesso ao efetuar saque'
+            ];
+        }else{
+            DB::rollback();
+
+        return[
+            'success' => false,
+            'message' => 'Falha ao recefetuar saque'
+        ];
+
+         }
+    }
+
 
 
 }

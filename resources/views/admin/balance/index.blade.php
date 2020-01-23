@@ -18,8 +18,11 @@
             <div class="card-header">
            
                 <a href="{{route('balance.deposit')}}" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Regarregar</a>
-                <a href="" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i> sacar</a>
                
+               @if ($amount > 0)
+               
+                <a href="{{route('balance.withdrawn')}}" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i> sacar</a>
+               @endif
             </div>
                 <div class="card-body">
                 <div class="col-lg-3 col-xs-6">
