@@ -11,8 +11,10 @@
         <div class="col-12">
             <div class="card">
             <div class="card-header">
+            
             <form  method="POST" action="{{ route('deposit.store') }}">
             {!! csrf_field() !!}
+            @include('admin.includes.alerts')
                 <div class="form-group">
                     <input name="valor" class="text" placeholder="valor Recarga" class="form-control"></inpu>
                 </div>

@@ -16,14 +16,21 @@
         <div class="col-12">
             <div class="card">
             <div class="card-header">
+           
                 <a href="{{route('balance.deposit')}}" class="btn btn-primary"><i class="fas fa-cart-plus"></i> Regarregar</a>
                 <a href="" class="btn btn-danger"><i class="fas fa-cart-arrow-down"></i> sacar</a>
+               
             </div>
                 <div class="card-body">
                 <div class="col-lg-3 col-xs-6">
+
+               
+                <p> @include('admin.includes.alerts')</p>
+               
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
+          
               <h3>R$ {{number_format($amount,2, '.','')}}<sup style="font-size: 20px"></sup></h3>
             </div>
             <div class="icon">
